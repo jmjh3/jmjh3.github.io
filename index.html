@@ -1,0 +1,846 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows激活工具 - 专业版系统激活</title>
+    <!-- 添加favicon图标 -->
+    <link rel="shortcut icon" href="https://picsum.photos/id/1/32/32" type="image/x-icon">
+    <link rel="icon" href="https://picsum.photos/id/1/32/32" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#0D47A1',
+                        accent: '#FF6B00',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #165DFF 0%, #0D47A1 100%);
+            }
+            .animate-pulse-slow {
+                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 text-dark min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-windows text-primary text-3xl"></i>
+                <span class="text-xl font-bold text-dark">Windows激活工具</span>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-700 hover:text-primary transition-colors font-medium">首页</a>
+                <a href="#features" class="text-gray-700 hover:text-primary transition-colors font-medium">功能特点</a>
+                <a href="#versions" class="text-gray-700 hover:text-primary transition-colors font-medium">支持版本</a>
+                <a href="#guide" class="text-gray-700 hover:text-primary transition-colors font-medium">使用指南</a>
+                <a href="#faq" class="text-gray-700 hover:text-primary transition-colors font-medium">常见问题</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hidden md:block px-5 py-2 bg-primary hover:bg-secondary text-white rounded-full transition-all duration-300 shadow-md hover:shadow-lg">
+                    <i class="fa fa-bolt mr-2"></i>提供激活服务
+                </a>
+                <button class="md:hidden text-dark text-xl" id="menu-toggle">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#" class="text-gray-700 hover:text-primary transition-colors font-medium py-2">首页</a>
+                <a href="#features" class="text-gray-700 hover:text-primary transition-colors font-medium py-2">功能特点</a>
+                <a href="#versions" class="text-gray-700 hover:text-primary transition-colors font-medium py-2">支持版本</a>
+                <a href="#guide" class="text-gray-700 hover:text-primary transition-colors font-medium py-2">使用指南</a>
+                <a href="#faq" class="text-gray-700 hover:text-primary transition-colors font-medium py-2">常见问题</a>
+                <a href="#" class="block px-5 py-3 bg-primary hover:bg-secondary text-white rounded-lg transition-all duration-300 text-center">
+                    <i class="fa fa-bolt mr-2"></i>立即激活
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="bg-gradient-blue text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-6">
+                    专业Windows激活解决方案
+                </h1>
+                <p class="text-lg md:text-xl mb-8 text-blue-100 max-w-lg">
+                    快速、安全地激活您的Windows系统，支持所有Windows版本，永久激活，无需付费。
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#activation" class="px-8 py-4 bg-white text-primary hover:bg-gray-100 font-bold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl text-center">
+                        <i class="fa fa-key mr-2"></i>获取激活密钥
+                    </a>
+                    <a href="#guide" class="px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold rounded-full transition-all duration-300 text-center">
+                        <i class="fa fa-book mr-2"></i>使用指南
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="https://picsum.photos/id/1/600/400" alt="Windows激活工具界面展示" class="rounded-lg shadow-2xl w-full max-w-lg">
+                    <div class="absolute -bottom-4 -right-4 bg-accent text-white rounded-lg px-4 py-2 shadow-lg animate-pulse-slow">
+                        <i class="fa fa-check-circle mr-1"></i> 100% 安全可靠
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计数据 -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-6 rounded-xl bg-gray-50 shadow-sm">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter-users">1000000</div>
+                    <p class="text-gray-600">活跃用户</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50 shadow-sm">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter-activations">850000</div>
+                    <p class="text-gray-600">成功激活</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50 shadow-sm">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter-versions">22</div>
+                    <p class="text-gray-600">支持版本</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gray-50 shadow-sm">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter-rating">4.9</div>
+                    <p class="text-gray-600">用户评分</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特点 -->
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">为什么选择我们的激活工具</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们的激活工具具有多项优势，确保您的Windows系统快速、安全地激活</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">100% 安全可靠</h3>
+                    <p class="text-gray-600">我们的工具不包含任何恶意软件、病毒或后门程序，所有激活过程均在本地完成，不会上传您的任何数据。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-bolt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">快速激活</h3>
+                    <p class="text-gray-600">只需几步操作，几分钟内即可完成Windows系统的激活，无需长时间等待，让您立即享受正版系统的全部功能。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-windows text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">全版本支持</h3>
+                    <p class="text-gray-600">支持所有Windows版本，包括Windows 10、Windows 11以及各个专业版本，满足不同用户的需求。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-clock-o text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">永久激活</h3>
+                    <p class="text-gray-600">一次激活，永久有效，无需担心系统过期或重新激活的问题，为您提供长期稳定的使用体验。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-refresh text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">自动更新</h3>
+                    <p class="text-gray-600">工具会自动检测并适配Windows系统的最新更新，确保始终能够正常激活最新版本的Windows系统。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-life-ring text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">专业支持</h3>
+                    <p class="text-gray-600">提供24/7专业技术支持，无论您遇到任何问题，我们的技术团队都会及时为您提供帮助和解决方案。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 支持版本 -->
+    <section id="versions" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">支持的Windows版本</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们的激活工具支持以下所有Windows版本，包括家庭版、专业版、企业版等</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="bg-primary p-4 text-white">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa fa-windows mr-2"></i> Windows 11
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 11 家庭版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 11 专业版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 11 企业版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 11 教育版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 11 专业工作站版</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="bg-primary p-4 text-white">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa fa-windows mr-2"></i> Windows 10
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 10 家庭版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 10 专业版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 10 企业版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 10 教育版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 10 专业工作站版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 10 家庭单语言版</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 10 移动版</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="bg-primary p-4 text-white">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa fa-windows mr-2"></i> 其他版本
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 8.1 所有版本</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 8 所有版本</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows 7 所有版本</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows Server 2022</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows Server 2019</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows Server 2016</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-green-500 mr-2"></i>
+                                <span>Windows Server 2012 R2</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 激活工具 -->
+    <section id="activation" class="py-16 bg-gradient-blue text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">开始激活您的Windows系统</h2>
+                <p class="text-blue-100 max-w-2xl mx-auto">选择您的Windows版本，点击生成按钮获取激活密钥</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+                <form id="activation-form" class="space-y-6">
+                    <div>
+                        <label for="windows-version" class="block text-gray-700 font-medium mb-2">选择Windows版本</label>
+                        <select id="windows-version" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="win11-home">Windows 11 家庭版</option>
+                            <option value="win11-pro">Windows 11 专业版</option>
+                            <option value="win11-enterprise">Windows 11 企业版</option>
+                            <option value="win11-education">Windows 11 教育版</option>
+                            <option value="win11-pro-workstation">Windows 11 专业工作站版</option>
+                            <option value="win10-home">Windows 10 家庭版</option>
+                            <option value="win10-pro">Windows 10 专业版</option>
+                            <option value="win10-enterprise">Windows 10 企业版</option>
+                            <option value="win10-education">Windows 10 教育版</option>
+                            <option value="win10-pro-workstation">Windows 10 专业工作站版</option>
+                            <option value="win10-home-single-language">Windows 10 家庭单语言版</option>
+                            <option value="win10-mobile">Windows 10 移动版</option>
+                            <option value="win81">Windows 8.1 所有版本</option>
+                            <option value="win8">Windows 8 所有版本</option>
+                            <option value="win7">Windows 7 所有版本</option>
+                            <option value="server-2022">Windows Server 2022</option>
+                            <option value="server-2019">Windows Server 2019</option>
+                            <option value="server-2016">Windows Server 2016</option>
+                            <option value="server-2012-r2">Windows Server 2012 R2</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="system-type" class="block text-gray-700 font-medium mb-2">系统类型</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="system-type" value="x64" class="w-4 h-4 text-primary focus:ring-primary" checked="">
+                                <span class="ml-2 text-gray-700">64位 (x64)</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="system-type" value="x86" class="w-4 h-4 text-primary focus:ring-primary">
+                                <span class="ml-2 text-gray-700">32位 (x86)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-4">
+                        <button type="button" id="generate-key" class="w-full py-4 bg-primary hover:bg-secondary text-white font-bold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center">
+                            <i class="fa fa-key mr-2"></i> 生成激活密钥
+                        </button>
+                    </div>
+                    
+                    <div id="key-result" class="hidden">
+                        <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-bold text-gray-700">为 <span id="version-display" class="text-primary"></span> 生成的激活密钥</h3>
+                                <button type="button" id="copy-key" class="text-primary hover:text-secondary transition-colors">
+                                    <i class="fa fa-copy mr-1"></i> 复制
+                                </button>
+                            </div>
+                            <div id="generated-key" class="font-mono text-lg bg-white p-3 rounded border border-gray-200 overflow-x-auto"></div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h3 class="font-bold text-gray-700 mb-2">激活步骤</h3>
+                            <ol class="list-decimal pl-5 space-y-2 text-gray-700">
+                                <li>按下 <kbd class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-mono">Win + R</kbd> 组合键打开运行窗口</li>
+                                <li>输入 <kbd class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-mono">slmgr.vbs /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX</kbd> 并回车（将X替换为上面的密钥）</li>
+                                <li>输入 <kbd class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-mono">slmgr.vbs /skms kms.jimingjh.site</kbd> 并回车</li>
+                                <li>输入 <kbd class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-mono">slmgr.vbs /ato</kbd> 并回车开始激活</li>
+                                <li>等待激活完成，重启电脑使更改生效</li>
+                            </ol>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用指南 -->
+    <section id="guide" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">使用指南</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">按照以下步骤，轻松激活您的Windows系统</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="space-y-8">
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">1</div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">选择您的Windows版本</h3>
+                                <p class="text-gray-600">在激活工具中，选择与您系统匹配的Windows版本和系统类型（32位或64位）。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">2</div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">生成激活密钥</h3>
+                                <p class="text-gray-600">点击"生成激活密钥"按钮，系统将为您的Windows版本生成对应的合法激活密钥。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">3</div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">复制并应用密钥</h3>
+                                <p class="text-gray-600">复制生成的密钥，通过系统自带的激活工具或命令提示符应用该密钥。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">4</div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">连接KMS服务器</h3>
+                                <p class="text-gray-600">设置KMS服务器地址为 kms.jimingjh.site，然后执行激活命令完成激活。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">5</div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">验证激活状态</h3>
+                                <p class="text-gray-600">激活完成后，您可以在系统设置中查看激活状态，确认您的Windows已成功激活。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/20/600/400" alt="Windows激活过程示意图" class="rounded-lg shadow-xl w-full max-w-lg mx-auto">
+                        <div class="absolute -top-4 -left-4 bg-accent text-white rounded-lg px-4 py-2 shadow-lg">
+                            <i class="fa fa-lightbulb-o mr-1"></i> 激活提示
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">常见问题</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">解答您在使用激活工具过程中可能遇到的问题</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4" id="faq-container">
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                            <span class="font-medium text-gray-800">这个激活工具安全吗？会包含病毒吗？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-4 bg-white">
+                            <p class="text-gray-600">我们的激活工具100%安全，不包含任何病毒、恶意软件或后门程序。所有激活过程均在本地完成，不会上传您的任何个人数据或系统信息。您可以使用任何杀毒软件进行检测验证。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                            <span class="font-medium text-gray-800">激活后是永久的吗？会过期吗？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-4 bg-white">
+                            <p class="text-gray-600">是的，使用我们的工具激活后，您的Windows系统将永久激活，不会过期。我们的激活方法模拟了正版授权过程，系统会认为您已经购买了正版授权，因此不会有任何使用限制或过期提醒。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                            <span class="font-medium text-gray-800">激活后可以接收Windows更新吗？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-4 bg-white">
+                            <p class="text-gray-600">完全可以。激活后您的系统与正版授权系统没有任何区别，可以正常接收和安装所有Windows更新，包括功能更新和安全补丁。我们的激活方法不会影响系统的任何正常功能。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                            <span class="font-medium text-gray-800">我已经有一个未激活的系统，如何使用此工具激活？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-4 bg-white">
+                            <p class="text-gray-600">非常简单，只需按照我们的使用指南操作即可。首先选择您当前安装的Windows版本，生成对应的激活密钥，然后通过系统自带的激活工具或命令提示符应用该密钥，最后连接KMS服务器完成激活。整个过程通常只需要几分钟。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                            <span class="font-medium text-gray-800">激活工具支持所有Windows版本吗？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-4 bg-white">
+                            <p class="text-gray-600">是的，我们的激活工具支持所有Windows版本，包括Windows 7、Windows 8/8.1、Windows 10和Windows 11的所有版本，以及Windows Server的各个版本。您可以在"支持版本"页面查看完整列表。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition-colors text-left">
+                            <span class="font-medium text-gray-800">使用此工具激活会有法律风险吗？</span>
+                            <i class="fa fa-chevron-down text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-4 bg-white">
+                            <p class="text-gray-600">本工具仅供个人学习和测试使用，请在使用后24小时内删除。如果您喜欢Windows系统，请购买正版授权。我们不鼓励也不支持任何盗版行为，使用本工具造成的任何法律后果由使用者自行承担。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 用户评价 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">用户评价</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">看看其他用户对我们激活工具的评价</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"这个激活工具真的很棒！我尝试了很多方法都无法激活我的Windows 10，使用这个工具后不到5分钟就成功激活了，而且是永久激活！"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/64/100/100" alt="用户头像" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">李明</h4>
+                            <p class="text-gray-500 text-sm">Windows 10 用户</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">5.0</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"非常简单易用，我是个电脑小白，按照步骤一步步操作，轻松激活了我的Windows 11。现在可以正常接收系统更新，没有任何问题。"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/65/100/100" alt="用户头像" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">王芳</h4>
+                            <p class="text-gray-500 text-sm">Windows 11 用户</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <span class="ml-2 text-gray-600">4.5</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">"我在公司的电脑上使用这个工具激活了Windows Server，效果很好，没有出现任何问题。而且技术支持非常及时，解答了我很多问题。"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/91/100/100" alt="用户头像" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-800">张伟</h4>
+                            <p class="text-gray-500 text-sm">系统管理员</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fa fa-windows text-primary text-3xl"></i>
+                        <span class="text-xl font-bold">Windows激活工具</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">专业的Windows系统激活解决方案，安全、快速、永久激活您的Windows系统。</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-primary transition-colors">功能特点</a></li>
+                        <li><a href="#versions" class="text-gray-400 hover:text-primary transition-colors">支持版本</a></li>
+                        <li><a href="#guide" class="text-gray-400 hover:text-primary transition-colors">使用指南</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-primary transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">资源</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">技术支持</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">更新日志</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">隐私政策</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">使用条款</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope-o text-primary mr-2"></i>
+                            <span class="text-gray-400">support@windowsactivator.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-primary mr-2"></i>
+                            <span class="text-gray-400">+86 (123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker text-primary mr-2"></i>
+                            <span class="text-gray-400">123 Activate Street, Windows City</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-500">© 2025 Windows激活工具. 保留所有权利.</p>
+                <p class="text-gray-500 text-sm mt-2">本网站内容仅供激活，如要进一步查看，请购买正版Windows系统。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ切换
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // 关闭移动端菜单
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        // 生成激活密钥
+        document.getElementById('generate-key').addEventListener('click', function() {
+            // 获取选择的版本和系统类型
+            const versionSelect = document.getElementById('windows-version');
+            const selectedVersion = versionSelect.options[versionSelect.selectedIndex].text;
+            
+            const systemType = document.querySelector('input[name="system-type"]:checked').value;
+            const systemTypeText = systemType === 'x64' ? '64位' : '32位';
+            
+            // 生成随机密钥
+            const key = generateProductKey();
+            
+            // 显示密钥和版本
+            const keyResult = document.getElementById('key-result');
+            const generatedKey = document.getElementById('generated-key');
+            const versionDisplay = document.getElementById('version-display');
+            
+            generatedKey.textContent = key;
+            versionDisplay.textContent = `${selectedVersion} (${systemTypeText})`;
+            keyResult.classList.remove('hidden');
+            
+            // 增加统计数据
+            incrementCounter('counter-activations');
+            
+            // 显示成功通知
+            showNotification('密钥生成成功！已为您的 ' + selectedVersion + ' (' + systemTypeText + ') 系统生成激活密钥。');
+        });
+        
+        // 复制密钥
+        document.getElementById('copy-key').addEventListener('click', function() {
+            const keyElement = document.getElementById('generated-key');
+            const textToCopy = keyElement.textContent;
+            
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                showNotification('密钥已复制到剪贴板！');
+            }).catch(function(err) {
+                console.error('复制失败: ', err);
+                showNotification('复制失败，请手动复制。', 'error');
+            });
+        });
+        
+        // 生成产品密钥 - 修复版（仅包含合法字符）
+        function generateProductKey() {
+            // Windows产品密钥合法字符: A-Z (不包含I, O, Q), 2-9
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let key = '';
+            
+            // 生成5组5个字符的密钥
+            for (let i = 0; i < 5; i++) {
+                let group = '';
+                for (let j = 0; j < 5; j++) {
+                    group += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                key += group;
+                if (i < 4) key += '-';
+            }
+            
+            return key;
+        }
+        
+        // 显示通知
+        function showNotification(message, type = 'success') {
+            // 创建通知元素
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-500 transform translate-x-full ${
+                type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            }`;
+            notification.textContent = message;
+            
+            // 添加到页面
+            document.body.appendChild(notification);
+            
+            // 显示通知
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // 自动关闭
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
+        
+        // 数字递增动画
+        function incrementCounter(elementId) {
+            const element = document.getElementById(elementId);
+            const finalValue = parseInt(element.textContent);
+            const startValue = 0;
+            const duration = 2000; // 动画持续时间（毫秒）
+            const increment = finalValue < 100 ? 1 : Math.floor(finalValue / 100);
+            let currentValue = startValue;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= finalValue) {
+                    element.textContent = finalValue + 1;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = currentValue;
+                }
+            }, duration / (finalValue / increment));
+        }
+        
+        // 初始化统计数据
+        window.addEventListener('load', function() {
+            incrementCounter('counter-users');
+            incrementCounter('counter-activations');
+            incrementCounter('counter-rating');
+        });
+    </script>
+
+</body></html>
+    
